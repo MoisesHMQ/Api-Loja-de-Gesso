@@ -16,7 +16,7 @@ def ferramentas():
         if objetos_gesso["ferramentas"] == objetos["ferramentas"]:
             return {"status": "Produto já cadastrado."}
     objetos = {
-        "codigo": str(uuid.uuid4()),
+        "id": str(uuid.uuid4()),
         "ferramentas": objetos["ferramentas"]
     }
     ferramentas_gesso.append(objetos)
@@ -33,7 +33,7 @@ def excluir():
     excluir_ferramentas = request.json
     print(ferramentas_gesso)
     for deletar_ferramentas in ferramentas_gesso:
-        if deletar_ferramentas["codigo"] == excluir_ferramentas["codigo"]:
+        if deletar_ferramentas["id"] == excluir_ferramentas["id"]:
             ferramentas_gesso.remove(deletar_ferramentas)
             return excluir_ferramentas
 
@@ -45,7 +45,7 @@ def cadastrar():
         if user["nºcontrato"] == obras["nºcontrato"]:
             return {"erro.": "nºcontrato em processo."}
     obras = {
-        "id_casa": str(uuid.uuid4()),
+        "id": str(uuid.uuid4()),
         "nºcontrato": obras["nºcontrato"],
         "senha": obras["senha"]
     }
@@ -73,7 +73,7 @@ def excluir_usuarios():
     termino_e_exclusão = request.json
     print(serviços)
     for dell in serviços:
-        if dell["id_casa"] == termino_e_exclusão["id_casa"]:
+        if dell["id"] == termino_e_exclusão["id"]:
             serviços.remove(dell)
             return termino_e_exclusão
 
@@ -85,7 +85,7 @@ def cadastro_clientes():
         if user["login"] == cad["login"]:
             return {"Algo deu errado.": "Esse usuario ja existe."}
     cad = {
-        "nºcadastro": str(uuid.uuid4()),
+        "id": str(uuid.uuid4()),
         "login": cad["login"],
         "senha": cad["senha"]
     }
@@ -112,7 +112,7 @@ def delete_usuarios():
     delete = request.json
     print(cliente)
     for list in cliente:
-        if list["nºcadastro"] == delete["nºcadastro"]:
+        if list["id"] == delete["id"]:
             cliente.remove(list)
             return delete
 
